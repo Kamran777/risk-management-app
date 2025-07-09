@@ -1,0 +1,78 @@
+@use "../abstracts/variables" as v;
+
+@mixin flex-center($direction: row, $justify: center, $align: center) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin font($size, $weight) {
+  font-size: $size;
+  font-weight: $weight;
+}
+
+@mixin mat-card() {
+  background-color: v.$compact-card-color;
+  height: fit-content;
+  border-radius: v.$border-radius-base;
+}
+
+@mixin responsive-font-size($desktop-size, $tablet-size, $mobile-size) {
+  font-size: $desktop-size;
+
+  @media (max-width: 1024px) {
+    font-size: $tablet-size;
+  }
+
+  @media (max-width: 480px) {
+    font-size: $mobile-size;
+  }
+}
+
+@mixin gap-size($desktop-size, $tablet-size, $mobile-size) {
+  gap: $desktop-size;
+
+  @media (max-width: 1024px) {
+    gap: $tablet-size;
+  }
+
+  @media (max-width: 480px) {
+    gap: $mobile-size;
+  }
+}
+
+@mixin width-and-height($desktop-size, $tablet-size, $mobile-size) {
+  width: $desktop-size;
+  height: $desktop-size;
+
+  @media (max-width: 1024px) {
+    width: $tablet-size;
+    height: $tablet-size;
+  }
+
+  @media (max-width: 480px) {
+    width: $mobile-size;
+    height: $mobile-size;
+  }
+}
+
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == mobile {
+    @media (max-width: v.$breakpoint-mobile) {
+      @content;
+    }
+  } @else if $breakpoint == tablet {
+    @media (max-width: v.$breakpoint-tablet) {
+      @content;
+    }
+  } @else if $breakpoint == small-desktop {
+    @media (max-width: v.$breakpoint-small-desktop) {
+      @content;
+    }
+  } @else if $breakpoint == desktop {
+    @media (max-width: v.$breakpoint-desktop) {
+      @content;
+    }
+  }
+}

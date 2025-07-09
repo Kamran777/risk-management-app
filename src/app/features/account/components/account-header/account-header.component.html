@@ -1,0 +1,41 @@
+<div class="account-header section-vertical-gap">
+  <div class="breadcrumb">
+    Dashboard // Accounts // <span class="highlight">Maritime Logistics Corp</span>
+  </div>
+
+  <div class="account-header-container">
+    <div class="account-info">
+      <img class="logo" src="assets/images/company-logo.jpg" alt="Company Logo" />
+      <div class="left-details">
+        <h2 class="company-name">Maritime Logistics Corp</h2>
+        <div class="company-details">
+          <div class="address">425 Harbor Boulevard, Suite 300<br />Seattle, WA 98104</div>
+          <div class="meta">
+            <div class="meta-section" *ngFor="let info of accountMeta">
+              <div class="meta-line"></div>
+              <div class="meta-item">
+                <div class="label">{{ info.label }}</div>
+                <div class="value">{{ info.value }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert-card">
+      <div class="header">
+        <mat-icon class="icon">info</mat-icon>
+        <span class="title">Needs Attention</span>
+      </div>
+
+      <div class="alert-items">
+        <div class="alert-item" *ngFor="let alert of alertItems">
+          <div class="alert-title">{{ alert.title }}</div>
+          <div class="alert-sub">{{ alert.subtitle }}</div>
+          <a class="alert-link">{{ alert.linkText }} →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

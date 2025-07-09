@@ -1,0 +1,102 @@
+@use "../../styles/abstracts/variables" as v;
+@use "../../styles/abstracts/mixins" as m;
+
+.toolbar {
+  background-color: #0d0f1a;
+  color: v.$primary-color;
+  padding: 8px 16px;
+  @include m.flex-center(row, space-between, center);
+
+  .search-and-avatar {
+    display: flex;
+    @include m.gap-size(5px, 0, 5px);
+
+    @media (max-width: 1024px) {
+      align-items: baseline;
+    }
+  }
+
+  .greeting {
+    font-weight: 300;
+    text-wrap-mode: wrap;
+    line-height: 1rem;
+    @include m.responsive-font-size(1.2rem, 13px, 10px);
+
+    @media (max-width: 1024px) {
+      width: 100%;
+    }
+
+    @media (max-width: 700px) {
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  .search-wrapper {
+    background-color: v.$compact-card-color;
+    border-radius: v.$border-radius-base;
+    padding: 6px 12px;
+    @include m.flex-center(row, space-between, center);
+
+    @media (min-width: 1024px) {
+      width: 300px;
+    }
+
+    .search-input {
+      background: transparent;
+      border: none;
+      outline: none;
+      width: 100%;
+      color: v.$primary-color;
+      @include m.responsive-font-size(14px, 13px, 12px);
+
+      &::placeholder {
+        color: v.$primary-color;
+        opacity: 0.7;
+        @include m.responsive-font-size(14px, 13px, 12px);
+      }
+    }
+
+    @media (max-width: 768px) {
+      width: 60%;
+      margin: 0 auto 8px auto;
+    }
+
+    @media (max-width: 480px) {
+      width: 100%;
+    }
+  }
+
+  .avatar {
+    padding: 0;
+    margin-left: 8px;
+
+    .avatar-circle {
+      background: linear-gradient(to right, #243bdb, #172fa3);
+      color: v.$primary-color;
+      font-weight: bold;
+      border-radius: v.$border-radius-base;
+      @include m.flex-center(row, center, center);
+      @include m.responsive-font-size(14px, 12px, 9px);
+    }
+
+    .avatar-circle {
+      @include m.width-and-height(36px, 30px, 24px);
+    }
+
+    @media (max-width: 768px) {
+      margin: 0 auto;
+    }
+
+    @media (max-width: 480px) {
+      margin-top: 6px;
+    }
+  }
+
+  @media (max-width: 700px) {
+    @include m.flex-center(column, center, center);
+    text-align: center;
+    gap: 3px;
+    height: 100%;
+  }
+}

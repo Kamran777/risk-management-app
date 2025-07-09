@@ -1,0 +1,85 @@
+@use "../../styles/abstracts/variables" as v;
+
+.tab-bar-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  .tab-bar {
+    padding: 13px 0;
+    display: flex;
+    gap: 12px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    flex: 1;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .tab-button {
+      border: 1px solid v.$secondary-color;
+      background-color: v.$tab-btn-bg-color;
+      font-size: v.$font-size-action-btn;
+      color: v.$primary-color !important;
+      font-weight: v.$font-weight-base;
+      white-space: nowrap;
+      flex: 0 0 auto;
+      height: 32px;
+
+      @media (max-width: 760px) {
+        font-size: 10px;
+        height: 34px;
+      }
+
+      @media (max-width: 480px) {
+        font-size: 8px;
+        height: 30px;
+      }
+
+      mat-icon {
+        margin-right: 4px;
+        font-size: 18px;
+        color: v.$text-color-blue;
+      }
+
+      &.active {
+        background-color: v.$text-color-blue;
+        border: 1px solid v.$text-color-blue;
+
+        mat-icon {
+          color: v.$primary-color;
+        }
+      }
+    }
+  }
+
+  .scroll-arrows {
+    margin-left: 8px;
+
+    .arrow-btn {
+      background: transparent;
+      border: 1px solid v.$secondary-color;
+      cursor: pointer;
+      padding: 4px;
+      margin-right: 5px;
+      mat-icon {
+        font-size: 16px;
+        color: v.$secondary-color;
+        width: 20px;
+        height: 17px;
+        display: flex;
+        justify-content: center;
+
+        @media (max-width: 480px) {
+          font-size: 13px;
+          width: 16px;
+          height: 12px;
+        }
+      }
+    }
+  }
+}

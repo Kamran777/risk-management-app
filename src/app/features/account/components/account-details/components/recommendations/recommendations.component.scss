@@ -1,0 +1,70 @@
+@use "../../../../../../shared/styles/abstracts/variables" as v;
+@use "../../../../../../shared/styles/abstracts/mixins" as m;
+
+.recommendations {
+  padding: 20px;
+
+  .title {
+    color: v.$success-color;
+    gap: v.$gap-base;
+    @include m.flex-center(row, left, center);
+  }
+
+  @include m.mat-card();
+
+  .rec-box {
+    @include m.flex-center(row, center, center);
+    gap: v.$gap-base;
+
+    .offer {
+      flex: 7;
+      font-size: 13px;
+      font-weight: v.$font-weight-base;
+
+      .offer-header {
+        line-height: 0;
+      }
+
+      .offer-details {
+        color: v.$secondary-color;
+      }
+    }
+
+    button {
+      flex: 1;
+      color: #282d3f;
+      background-color: v.$success-color;
+      font-weight: v.$font-weight-base;
+      border: none;
+      padding: 15px 10px;
+      border-radius: 2rem;
+    }
+  }
+}
+
+@include m.respond-to(tablet) {
+  .recommendations {
+    padding: 15px;
+
+    .rec-box {
+      .offer {
+        font-size: 12px;
+
+        .offer-header {
+          line-height: 1;
+        }
+      }
+    }
+  }
+}
+
+@include m.respond-to(small-desktop) {
+  .rec-box {
+    @include m.flex-center(column, center, flex-start);
+    gap: 10px;
+
+    button {
+      width: 100%;
+    }
+  }
+}

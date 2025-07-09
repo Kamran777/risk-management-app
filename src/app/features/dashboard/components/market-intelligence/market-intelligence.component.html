@@ -1,0 +1,10 @@
+<div class="market-intelligence-card">
+  <h3>{{title}}</h3>
+  <ul>
+    <li *ngFor="let item of items">
+      <span class="dot" [ngClass]="item.color"></span>
+      {{ item.text }}
+    </li>
+    <div class="line"></div>
+  </ul>
+</div>

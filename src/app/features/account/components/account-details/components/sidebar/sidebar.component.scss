@@ -1,0 +1,72 @@
+@use "../../../../../../shared/styles/abstracts/variables" as v;
+@use "../../../../../../shared/styles/abstracts/mixins" as m;
+
+.sidebar {
+  width: 270px;
+  height: fit-content;
+
+  .decision-support {
+    @include m.mat-card();
+  }
+
+  h4:not(:nth-child(1)) {
+    padding-top: 20px;
+  }
+
+  h4:nth-child(1) {
+    padding-top: 7px;
+  }
+
+  h4 {
+    padding-right: 20px;
+    padding-left: 20px;
+    @include m.flex-center(row, space-between, flex-end);
+
+    .count-decision-support {
+      border: 1px solid;
+    }
+
+    .count {
+      background: v.$compact-card-color;
+      padding: 2px 8px;
+      border-radius: 7px;
+      align-content: center;
+      height: 25px;
+    }
+  }
+
+  ul {
+    list-style: none;
+    padding: 0 1.6rem 1rem 2.6rem;
+
+    li {
+      font-size: 13px;
+      &.active {
+        color: v.$text-color-blue;
+      }
+    }
+
+    li:not(:last-child) {
+      margin: 1.5rem 0;
+    }
+  }
+}
+
+@include m.respond-to(tablet) {
+  .sidebar {
+    ul {
+      padding: 0 1rem 1rem 1.5rem;
+      li {
+        font-size: 12px;
+        margin: 1rem 0;
+      }
+    }
+  }
+}
+
+@include m.respond-to(small-desktop) {
+  .sidebar {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+}

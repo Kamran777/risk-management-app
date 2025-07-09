@@ -1,0 +1,118 @@
+@use "../../../../../../shared/styles/abstracts/variables" as v;
+@use "../../../../../../shared/styles/abstracts/mixins" as m;
+
+.message-card {
+  background: v.$compact-card-color;
+  border-radius: 12px;
+  padding: 16px;
+  color: v.$primary-color;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  .message-title {
+    font-weight: v.$font-weight-base;
+    color: v.$primary-color;
+    margin: 0;
+    flex: 1;
+    @include m.responsive-font-size(16px, 15px, 14px);
+  }
+
+  .title-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    .status-tag {
+      border-radius: v.$border-radius-base;
+      padding: 2px 10px;
+      white-space: nowrap;
+      height: fit-content;
+      background-color: v.$text-color-blue;
+      color: v.$primary-color;
+      @include m.responsive-font-size(12px, 12px, 11px);
+    }
+  }
+
+  .author {
+    color: v.$secondary-color;
+    @include m.responsive-font-size(13px, 12px, 11px);
+  }
+
+  .message-body {
+    color: v.$primary-color;
+    font-weight: v.$font-weight-base;
+    margin: 0;
+    @include m.responsive-font-size(14px, 13px, 12px);
+  }
+
+  .attachment-tag {
+    background-color: v.$success-color;
+    padding: 0 10px;
+    border-radius: v.$border-radius-base;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: v.$primary-color;
+    @include m.responsive-font-size(13px, 12px, 11px);
+
+    mat-icon {
+      position: relative;
+      top: 7.5px;
+      rotate: 45deg;
+      @include m.responsive-font-size(14px, 12px, 11px);
+    }
+  }
+
+  .reply-button {
+    align-self: flex-start;
+    margin-top: auto;
+    border-radius: 20px;
+    border: none;
+    background-color: v.$text-color-blue;
+    color: v.$primary-color;
+    cursor: pointer;
+    padding: 0.4rem 2rem;
+    transition: background-color 0.3s ease;
+    @include m.responsive-font-size(13px, 12px, 11px);
+
+    &:hover {
+      background-color: v.$text-color-blue;
+    }
+  }
+}
+
+.message-card.new {
+  border: 1px solid v.$text-color-blue;
+}
+
+.message-card {
+  padding: 14px;
+  gap: 7px;
+
+  .message-title {
+    @include m.responsive-font-size(15px, 14px, 13px);
+  }
+
+  .author {
+    @include m.responsive-font-size(12px, 11px, 11px);
+  }
+
+  .message-body {
+    @include m.responsive-font-size(13px, 12px, 11px);
+  }
+
+  .attachment-tag {
+    @include m.responsive-font-size(12px, 11px, 11px);
+
+    mat-icon {
+      @include m.responsive-font-size(12px, 11px, 11px);
+    }
+  }
+
+  .reply-button {
+    padding: 0.35rem 1.5rem;
+    @include m.responsive-font-size(12px, 11px, 11px);
+  }
+}

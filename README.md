@@ -2,6 +2,33 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.4.
 
+## Technologies & Tools Used
+
+- Angular Material
+- SCSS (Sass)
+- Forms
+- RxJS
+- Signals
+- Lazy Loading
+- HttpClient
+- GPT
+- Fontspring
+- Figma Color Picker
+- Services
+- Folder structure
+- ESLint + Prettier
+- Apexcharts
+- ChangeDetectionStrategy.OnPush
+- JSON data
+- Responsiveness (mobile/tablet/desktop)
+- Tab Switching
+- Searching data in a table
+- Highlight active states
+- Show additional buttons when clicking on an icon
+- Show work queue data (also number of data) based on "Pending review", "Referrals" and "Assigned to me"
+- Show total value during search in a Policy table
+- etc.
+
 ## Development server
 
 To start a local development server, run:

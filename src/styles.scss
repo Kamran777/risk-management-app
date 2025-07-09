@@ -1,1 +1,82 @@
-/* You can add global styles to this file, and also import other style files */
+@use "./app/shared/styles/abstracts/variables" as v;
+@use "./app/shared/styles/abstracts/mixins" as m;
+@use "./app/shared/styles/base/typography" as t;
+
+* {
+  font-family: "MyCustomFont", Arial, sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  background-color: #0d0f1a;
+  padding: 0 5rem;
+
+  @media (max-width: 1024px) {
+    padding: 0 3rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0 1rem;
+  }
+}
+
+button {
+  border-radius: v.$border-radius-base;
+  color: v.$primary-color;
+  cursor: pointer;
+}
+
+.section-vertical-gap {
+  padding: 1rem 0;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: v.$border-radius-base;
+
+  &.blue {
+    background-color: v.$text-color-blue;
+  }
+  &.orange {
+    background-color: v.$warning-color;
+  }
+  &.green {
+    background-color: v.$success-color;
+  }
+}
+
+.bar-fill {
+  height: 100%;
+  border-radius: 0 10px 10px 0;
+  background: linear-gradient(to right, #325698, #2e426c);
+  transition: width 0.4s ease-in-out;
+}
+
+input {
+  border-radius: v.$border-radius-base;
+  color: v.$primary-color;
+  background: v.$compact-card-color;
+}
+
+button.filter,
+button.group {
+  background: v.$compact-card-color;
+  border: 1px solid v.$text-color-blue;
+  border-radius: 20px;
+  padding: 4px 24px;
+  color: v.$text-color-blue;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+@font-face {
+  font-family: "MyCustomFont";
+  src: url("/assets/fonts/anthro-light.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}

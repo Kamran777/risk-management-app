@@ -1,0 +1,27 @@
+<div class="account-status-wrapper section-vertical-gap">
+  <section class="account-status-box">
+    <header>
+      <h3>{{title}}</h3>
+    </header>
+    <div class="status-steps">
+      <ng-container *ngFor="let step of statusSteps">
+        <div class="step" [ngClass]="step.status">
+          <mat-icon>check</mat-icon>
+          <span>{{ step.label }}</span>
+        </div>
+      </ng-container>
+    </div>
+  </section>
+
+  <section class="compliance-box">
+    <header class="compliance-header">
+      <h3>Compliance &amp; Documentation</h3>
+      <a class="history-link" href="#">See history →</a>
+    </header>
+    <div class="compliance-list">
+      <div class="item" *ngFor="let item of complianceItems">
+        <mat-icon>check</mat-icon> {{ item }}
+      </div>
+    </div>
+  </section>
+</div>

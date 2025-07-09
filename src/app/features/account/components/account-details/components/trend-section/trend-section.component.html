@@ -1,0 +1,24 @@
+<div class="trend-section">
+  <mat-card class="win-box" *ngFor="let trend of trends" [ngClass]="trend.type">
+    <div class="title">
+      <mat-icon [style.color]="trend.iconColor">{{ trend.icon }}</mat-icon>
+      <h4>{{ trend.title }}</h4>
+    </div>
+
+    <div *ngFor="let item of trend.items; index as i" class="trend-item">
+      <div class="label">
+        <span class="order-number" [ngClass]="'order-number-' + trend.type">
+          {{ i + 1 }}
+        </span>
+        <span>{{ item.label }}</span>
+      </div>
+
+      <div class="progress-bar" [ngClass]="trend.colorClass">
+        <div class="fill" [ngStyle]="{ width: (item.value < 0 ? -item.value : item.value) + '%' }"></div>
+        <span class="value">
+          {{ item.value > 0 ? '+' : '' }}{{ item.value }}%
+        </span>
+      </div>
+    </div>
+  </mat-card>
+</div>

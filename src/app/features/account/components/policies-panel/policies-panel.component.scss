@@ -1,0 +1,285 @@
+@use "../../../../shared/styles/abstracts/variables" as v;
+@use "../../../../shared/styles/abstracts/mixins" as m;
+
+$tablet: 960px;
+$mobile: 600px;
+
+.policies-container {
+  color: v.$primary-color;
+
+  .policies-table-container {
+    background-color: v.$expanded-card-color;
+    padding: 1rem;
+    border-radius: v.$border-radius-base;
+
+    mat-icon {
+      font-size: 14px;
+      border-radius: 1rem;
+      color: v.$primary-color;
+      border: 1px solid;
+      align-content: center;
+      width: 18px;
+      height: 19px;
+      padding-left: 3px;
+    }
+
+    mat-icon.blue {
+      background-color: v.$text-color-blue;
+      border-color: v.$text-color-blue;
+    }
+
+    mat-icon.green {
+      background-color: v.$success-color;
+      border-color: v.$success-color;
+    }
+
+    mat-icon.purple {
+      background-color: #8b5cf6;
+      border-color: #8b5cf6;
+    }
+
+    mat-icon.red {
+      background-color: v.$danger-color;
+      border-color: v.$danger-color;
+    }
+
+    .toolbar {
+      display: flex;
+      gap: v.$gap-base;
+      margin-bottom: 20px;
+
+      input.search {
+        padding: 0 12px;
+        border: 1px solid v.$secondary-color;
+      }
+    }
+
+    .table-scroll-container {
+      max-height: 400px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin-bottom: 12px;
+      scrollbar-width: thin;
+      scrollbar-color: v.$compact-card-color v.$expanded-card-color;
+
+      &::-webkit-scrollbar {
+        height: 8px;
+      }
+      &::-webkit-scrollbar-track {
+        background: v.$tab-btn-bg-color;
+        border-radius: 4px;
+      }
+      &::-webkit-scrollbar-thumb {
+        background-color: v.$compact-card-color;
+        border-radius: 4px;
+        border: 2px solid v.$tab-btn-bg-color;
+      }
+      &:hover::-webkit-scrollbar-thumb {
+        background-color: v.$expanded-card-color;
+      }
+
+      .policies-table {
+        width: 100%;
+        border-collapse: collapse;
+        overflow: hidden;
+
+        th,
+        td {
+          padding: 7px;
+          white-space: nowrap;
+        }
+
+        th {
+          text-align: left;
+        }
+
+        thead tr {
+          position: sticky;
+          top: 0;
+          background-color: v.$compact-card-color;
+          z-index: 10;
+        }
+
+        tbody {
+          tr {
+            .actions {
+              button {
+                background: none;
+                border: none;
+                mat-icon {
+                  color: v.$primary-color;
+                  padding-left: 1px;
+                  font-size: 13px;
+                }
+              }
+            }
+            .line {
+              display: block;
+
+              .policy-line-title {
+                display: flex;
+                align-items: center;
+                margin-bottom: 2px;
+                mat-icon {
+                  margin-right: 4px;
+                }
+                .title {
+                  font-weight: 600;
+                }
+              }
+
+              .subtitle {
+                color: v.$secondary-color;
+              }
+            }
+
+            .status-dot {
+              display: inline-block;
+            }
+
+            .status-dot.green {
+              background-color: v.$success-color;
+            }
+
+            .status-dot.yellow {
+              background-color: v.$warning-color;
+            }
+
+            .loss-ratio {
+              display: inline-block;
+              padding: 4px 12px;
+              border-radius: v.$border-radius-base;
+            }
+
+            .menu {
+              cursor: pointer;
+              color: v.$primary-color;
+            }
+          }
+
+          .summary td {
+            font-weight: 600;
+            border-top: 1px solid v.$secondary-color;
+          }
+
+          .summary td:nth-child(1) {
+            text-align: right;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: $tablet) {
+  .policies-table-container {
+    padding: 0.75rem;
+
+    .toolbar {
+      input.search {
+        font-size: 13px;
+      }
+
+      button.filter,
+      button.group {
+        font-size: 11px;
+        padding: 4px 14px;
+      }
+    }
+
+    .table-scroll-container .policies-table {
+      th,
+      td {
+        font-size: 10px;
+        padding: 6px;
+      }
+
+      tbody tr {
+        .policy-line-title .title {
+          font-size: 10px;
+        }
+
+        .subtitle {
+          font-size: 10px;
+        }
+
+        .loss-ratio {
+          font-size: 12px;
+        }
+      }
+
+      .summary td {
+        font-size: 11px;
+      }
+    }
+  }
+}
+
+@media (max-width: $mobile) {
+  .policies-table-container {
+    padding: 0.5rem;
+
+    .toolbar {
+      flex-direction: column;
+      gap: 10px;
+
+      input.search {
+        font-size: 12px;
+        padding: 5px 12px !important;
+      }
+
+      button.filter,
+      button.group {
+        font-size: 10px;
+        padding: 3px 12px;
+      }
+    }
+
+    .table-scroll-container {
+      overflow-x: auto;
+
+      .policies-table {
+        min-width: 900px;
+
+        th,
+        td {
+          font-size: 8px;
+          padding: 5px;
+        }
+
+        .actions {
+          mat-icon {
+            border: 1px solid;
+            border-radius: v.$border-radius-base;
+            rotate: 90deg;
+            font-size: 9px;
+            color: v.$primary-color;
+            @include m.flex-center(row, center, center);
+            width: 16px;
+            height: 16px;
+          }
+        }
+
+        .policy-line-title .title {
+          font-size: 9px !important;
+        }
+
+        .subtitle {
+          font-size: 9px !important;
+        }
+
+        .loss-ratio {
+          font-size: 11px;
+        }
+
+        .menu {
+          font-size: 16px;
+        }
+
+        .summary td {
+          font-size: 9px;
+        }
+      }
+    }
+  }
+}

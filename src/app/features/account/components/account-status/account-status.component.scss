@@ -1,0 +1,209 @@
+@use "../../../../shared/styles/abstracts/variables" as v;
+
+.account-status-wrapper {
+  display: flex;
+  color: v.$primary-color;
+  flex-wrap: wrap;
+
+  @media (min-width: 1024px) {
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+  }
+}
+
+.account-status-box {
+  flex: 1 1 620px;
+  @media (max-width: 1024px) {
+    flex: 0;
+  }
+
+  @media (max-width: 768px) {
+    flex: 1 1 100%;
+  }
+}
+
+.compliance-box {
+  flex: 1 1 420px;
+
+  @media (max-width: 1024px) {
+    flex: 0;
+  }
+
+  @media (max-width: 768px) {
+    flex: 1 1 100%;
+  }
+
+  .compliance-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 0.5rem;
+
+    @media (max-width: 480px) {
+      row-gap: 0;
+      margin-bottom: 10px;
+      flex-wrap: nowrap;
+    }
+  }
+}
+
+h3 {
+  display: flex;
+  align-items: baseline;
+}
+
+.status-steps,
+.compliance-list {
+  background-color: v.$compact-card-color;
+  padding: 2rem 1.5rem;
+  border-radius: v.$border-radius-base;
+
+  @media (max-width: 768px) {
+    padding: 1.5rem 1rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1rem;
+  }
+}
+
+.status-steps {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+
+  @media (max-width: 768px) {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 480px) {
+    justify-content: center;
+    gap: 0.75rem 0.5rem;
+  }
+}
+
+.step {
+  text-align: center;
+  flex: 0 0 15%;
+  position: relative;
+  font-size: 20px;
+  font-weight: 400;
+  color: v.$primary-color;
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+    flex: 0 0 45%;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 10px;
+    flex: 0 0 22%;
+  }
+}
+
+.step mat-icon {
+  margin: 0.2rem auto 0.5rem;
+  display: flex;
+  font-size: 16px;
+  border-radius: 50%;
+  border: 1px solid;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+    width: 20px;
+    height: 20px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 12px;
+    width: 18px;
+    height: 18px;
+  }
+}
+
+.step.completed mat-icon {
+  color: v.$success-color;
+  border-color: v.$success-color;
+}
+
+.step.pending mat-icon {
+  color: v.$secondary-color;
+  border-style: dashed;
+}
+
+.step::after {
+  content: "";
+  position: absolute;
+  top: 16px;
+  right: -50%;
+  width: 100%;
+  height: 2px;
+  border-top: 1px dashed v.$success-color;
+  z-index: 0;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.step:last-child::after {
+  display: none;
+}
+
+.compliance-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.1rem;
+  font-size: 13px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    font-size: 12px;
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+    font-size: 10px;
+    white-space: nowrap;
+  }
+}
+
+.item mat-icon {
+  color: v.$success-color;
+  font-size: 9px;
+  border-radius: 50%;
+  border: 2px solid;
+  padding-left: 3px;
+  align-content: center;
+  width: 12px;
+  height: 14px;
+  margin-right: 0.5rem;
+
+  @media (max-width: 480px) {
+    font-size: 8px;
+    width: 10px;
+    height: 12px;
+  }
+}
+
+.history-link {
+  font-size: 0.85rem;
+  color: v.$text-color-blue;
+  text-decoration: none;
+  margin-left: 1rem;
+
+  @media (max-width: 480px) {
+    font-size: 10px;
+    margin-left: 0;
+  }
+}

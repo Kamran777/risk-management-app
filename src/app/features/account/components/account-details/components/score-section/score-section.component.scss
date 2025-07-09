@@ -1,0 +1,108 @@
+@use "../../../../../../shared/styles/abstracts/variables" as v;
+@use "../../../../../../shared/styles/abstracts/mixins" as m;
+
+.score-section {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+
+  .position-item {
+    height: 16px;
+
+    .bar-container {
+      gap: v.$gap-base;
+      @include m.flex-center(row, left, center);
+
+      .progress-bar {
+        .fill {
+          height: 100%;
+          transition: width 0.6s ease;
+        }
+        &.green .fill {
+          background: linear-gradient(to right, #273843, #306e5a, #37a06e);
+        }
+        &.yellow .fill {
+          background: linear-gradient(to right, #454342, #ad9354, #e8c25e);
+        }
+      }
+    }
+
+    .position-value {
+      font-size: v.$font-size-sm;
+      width: 130px;
+      color: v.$secondary-color;
+    }
+
+    .progress-bar {
+      flex: 1;
+      height: 12px;
+      width: 80px;
+      background-color: v.$bar-bg-color;
+      border-radius: v.$border-radius-base;
+      .fill {
+        border-radius: v.$border-radius-base;
+      }
+
+      &.blue .fill {
+        background: linear-gradient(to right, #325698, #2e426c);
+      }
+    }
+  }
+
+  .score-details {
+    @include m.flex-center(row, left, center);
+    gap: 4px;
+  }
+
+  mat-card {
+    flex: 1;
+    padding: 20px 15px;
+    @include m.mat-card();
+
+    .score-value {
+      font-size: v.$font-size-xxl;
+    }
+  }
+
+  .score-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 9px;
+    border: 1px solid v.$text-color-blue;
+    border-radius: v.$border-radius-base;
+    font-size: v.$font-size-sm;
+    color: v.$text-color-blue;
+    font-weight: v.$font-weight-bold;
+
+    .dots {
+      margin-right: 4px;
+      letter-spacing: 1px;
+      font-size: 19px;
+    }
+  }
+}
+
+@include m.respond-to(tablet) {
+  .score-section {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    .score-value {
+      font-size: 32px;
+    }
+
+    .score-badge {
+      font-size: 10px;
+
+      .dots {
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+@include m.respond-to(mobile) {
+  .score-details {
+    display: block !important;
+  }
+}

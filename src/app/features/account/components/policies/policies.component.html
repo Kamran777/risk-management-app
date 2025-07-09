@@ -1,0 +1,16 @@
+<div class="policies-container section-vertical-gap">
+  <h2>{{title}}</h2>
+
+  <div class="carousel-wrapper">
+    <div class="policies-grid">
+      <div class="policy-card" *ngFor="let policy of policies">
+        <div class="header" [style.color]="policy.color">
+          <mat-icon>{{ policy.icon }}</mat-icon>
+          <div class="name">{{ policy.name }}</div>
+        </div>
+        <div class="premium">Premium: {{ policy.premium }}</div>
+        <div class="date">Eff.Date: {{ policy.date }}</div>
+      </div>
+    </div>
+  </div>
+</div>

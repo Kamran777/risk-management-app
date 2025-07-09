@@ -1,0 +1,14 @@
+<mat-card class="recommendations">
+  <div class="title">
+    <mat-icon>{{ icon }}</mat-icon>
+    <h4>{{ title }}</h4>
+  </div>
+
+  <div class="rec-box" *ngFor="let rec of recommendations">
+    <div class="offer">
+      <p class="offer-header"><strong>{{ rec.header }}</strong></p>
+      <p class="offer-details">{{ rec.details }}</p>
+    </div>
+    <button mat-raised-button color="primary">{{ rec.buttonText }}</button>
+  </div>
+</mat-card>

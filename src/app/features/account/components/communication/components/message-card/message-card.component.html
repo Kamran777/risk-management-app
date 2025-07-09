@@ -1,0 +1,16 @@
+<div class="message-card" [ngClass]="message.status?.toLowerCase()">
+  <div class="title-row" *ngIf="message.status">
+    <div class="status-tag">{{ message.status }}</div>
+    <h3 class="message-title">{{ message.title }}</h3>
+  </div>
+  <h3 *ngIf="!message.status" class="message-title">{{ message.title }}</h3>
+
+  <div class="author">{{ message.author }} // {{ message.date }}</div>
+  <p class="message-body">{{ message.body }}</p>
+
+  <div class="attachments" *ngIf="message.attachments">
+    <span class="attachment-tag"><mat-icon>attach_file</mat-icon> {{ message.attachments }} attachments</span>
+  </div>
+
+  <button class="reply-button" *ngIf="message.status !== 'Responded'">Reply</button>
+</div>

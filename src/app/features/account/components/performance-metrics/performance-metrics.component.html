@@ -1,0 +1,44 @@
+<div class="performance-container section-vertical-gap">
+  <h2>{{title}}</h2>
+
+  <div class="cards-grid">
+    <div class="card winnability">
+      <div class="title">
+        <h4 class="text">Winnability</h4>
+        <div class="dots">
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+        </div>
+      </div>
+      <div class="rating">
+        <div class="value">Very Strong</div>
+      </div>
+      <a class="link">See all factors →</a>
+    </div>
+
+    <div class="card loss-ratio">
+      <h4 class="title">Loss Ratio</h4>
+      <div class="value">25% <span class="sub">vs 42% target</span></div>
+      <a class="link">View history →</a>
+    </div>
+
+    <div class="card premium-growth">
+      <h4 class="title">Premium Growth</h4>
+      <div class="value">12.4% <span class="sub">YoY increase</span></div>
+      <div class="sub">$123M vs $150M Target</div>
+      <a class="link">View trend →</a>
+    </div>
+
+    <div class="card exposure">
+      <h4 class="title">Exposure Distribution</h4>
+      <div class="distribution-row" *ngFor="let item of exposure">
+        <div class="bar-container">
+          <div class="bar-fill" [style.width.%]="item.value"></div>
+        </div>
+        <div class="label">{{ item.label }}: {{ item.value }}%</div>
+      </div>
+    </div>
+  </div>
+</div>

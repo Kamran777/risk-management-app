@@ -1,0 +1,72 @@
+<div class="portfolio-goals-card">
+  <h3>{{ title }}</h3>
+
+  <div class="gauge-container">
+    <div class="title">Portfolio Loss Ratio Target</div>
+    <div class="arrow top" [style.left.%]="portfolioLossRatio.target">
+      <div class="target-label portfolio-target-label">TG: {{ portfolioLossRatio.target }}{{ unit }}</div>
+      <mat-icon class="blue">arrow_drop_down</mat-icon>
+    </div>
+
+    <div class="bar-zone">
+      <div class="segment green" [style.width.%]="portfolioLossRatio.segments.green"></div>
+      <div class="segment yellow" [style.width.%]="portfolioLossRatio.segments.yellow"></div>
+      <div class="segment red" [style.width.%]="portfolioLossRatio.segments.red"></div>
+
+      <div class="value value-1">
+        {{ portfolioLossRatio.value }}{{ unit }}
+      </div>
+    </div>
+
+    <div class="arrow bottom portfolio-bar-icons" [style.left.%]="portfolioLossRatio.value">
+      <mat-icon class="green">arrow_drop_up</mat-icon>
+    </div>
+
+    <div class="status-text portfolio-bar-icons" [ngClass]="portfolioLossRatio.statusColor">
+      {{ portfolioLossRatio.delta }}
+    </div>
+  </div>
+
+  <div class="gauge-container">
+    <div class="title">Renewal Retention</div>
+    <div class="arrow top renewal-bar-icons" [style.left.%]="portfolioLossRatio.target">
+      <div class="target-label renewal-target-label">{{ renewalRetention.targetLabel }}</div>
+    </div>
+
+    <div class="bar-zone">
+      <div class="segment red" [style.width.%]="renewalRetention.segments[0]"></div>
+      <div class="segment yellow" [style.width.%]="renewalRetention.segments[1]"></div>
+      <div class="segment green" [style.width.%]="renewalRetention.segments[2]"></div>
+      <div class="segment yellow" [style.width.%]="renewalRetention.segments[3]"></div>
+
+      <div class="value value-2">
+        {{ renewalRetention.value }}{{ unit }}
+      </div>
+    </div>
+
+    <div class="arrow bottom renewal-bar-icons" [style.left.%]="0">
+      <mat-icon class="green">arrow_drop_up</mat-icon>
+    </div>
+
+    <div class="status-text renewal-bar-icons" [ngClass]="renewalRetention.statusColor">
+      {{ renewalRetention.statusLabel }}
+    </div>
+  </div>
+
+  <div class="goal-line" *ngFor="let goal of goalLines">
+    <div class="goal-label">{{ goal.label }}</div>
+    <div class="goal-container">
+      <div class="left-side">
+        <div class="bar-wrapper">
+          <div class="bar-fill">{{ goal.currentValue }}</div>
+        </div>
+        <div class="goal-foot">
+          <span>{{ goal.percentage }}%</span>
+        </div>
+      </div>
+      <div class="right-side">
+        <span>{{ goal.totalValue }}</span>
+      </div>
+    </div>
+  </div>
+</div>

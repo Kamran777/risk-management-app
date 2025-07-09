@@ -1,0 +1,33 @@
+<div class="score-section">
+  <mat-card>
+    <h4>Overall Score</h4>
+    <div class="score-details">
+      <div class="score-value">82%</div>
+      <div class="score-badge">
+        <span class="dots">●●●●</span>
+        <span class="text">Very Strong</span>
+      </div>
+    </div>
+  </mat-card>
+
+  <mat-card>
+    <div class="trend-card">
+      <h4>Historical trend</h4>
+      <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [xaxis]="chartOptions.xaxis"
+        [stroke]="chartOptions.stroke" [fill]="chartOptions.fill" [tooltip]="chartOptions.tooltip">
+      </apx-chart>
+    </div>
+  </mat-card>
+
+  <mat-card>
+    <h4>Position</h4>
+    <div *ngFor="let item of positionBars" class="position-item">
+      <div class="bar-container">
+        <div class="progress-bar" [ngClass]="item.color">
+          <div class="fill" [ngStyle]="{ width: item.value + '%' }"></div>
+        </div>
+        <span class="position-value">{{ item.label + ': ' + item.value }}%</span>
+      </div>
+    </div>
+  </mat-card>
+</div>

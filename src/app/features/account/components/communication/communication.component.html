@@ -1,0 +1,20 @@
+<div class="communication-container section-vertical-gap">
+  <h2 class="section-title">{{title}}</h2>
+
+  <div class="communication-details">
+    <div class="toolbar">
+      <input placeholder="Search" class="search" />
+      <button class="filter">Filter</button>
+      <button class="group">Group</button>
+    </div>
+
+    <div class="message-columns">
+      <div class="left-column">
+        <app-message-card *ngFor="let msg of newMessages" [message]="msg"></app-message-card>
+      </div>
+      <div class="right-column">
+        <app-message-card *ngFor="let msg of oldMessages" [message]="msg"></app-message-card>
+      </div>
+    </div>
+  </div>
+</div>

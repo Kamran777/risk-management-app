@@ -1,0 +1,296 @@
+@use "../../../../shared/styles/abstracts/variables" as v;
+
+.work-queue-card {
+  .table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
+    margin-bottom: 12px;
+
+    /* For Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: v.$compact-card-color v.$tab-btn-bg-color;
+
+    /* For WebKit browsers (Chrome, Safari) */
+    &::-webkit-scrollbar {
+      height: 8px; /* horizontal scrollbar height */
+    }
+    &::-webkit-scrollbar-track {
+      background: v.$tab-btn-bg-color;
+      border-radius: 4px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: v.$compact-card-color;
+      border-radius: 4px;
+      border: 2px solid v.$tab-btn-bg-color; /* padding around thumb */
+    }
+    &:hover::-webkit-scrollbar-thumb {
+      background-color: v.$expanded-card-color;
+    }
+  }
+
+  .filters {
+    display: flex;
+    gap: v.$gap-base;
+    margin-bottom: 20px;
+
+    .pill {
+      background: v.$tab-btn-bg-color;
+      border: 1px solid v.$tab-btn-bg-color;
+      font-size: v.$font-size-action-btn;
+      padding: 4px 16px;
+
+      &.active {
+        background: v.$text-color-blue;
+        border: 1px solid v.$text-color-blue;
+      }
+    }
+  }
+
+  .queue-table {
+    width: 100%;
+    font-size: 14px;
+    min-width: 600px; /* force scroll on smaller tablets */
+
+    tr {
+      color: v.$primary-color;
+      font-size: v.$font-size-tr;
+      height: 27px;
+    }
+
+    td {
+      padding: 6px 12px;
+      border-bottom-style: none;
+      white-space: nowrap; /* prevent wrapping in table cells */
+    }
+
+    .originator {
+      display: flex;
+      align-items: center;
+      gap: v.$gap-base;
+
+      .avatar {
+        background: v.$avatar-color;
+        color: v.$primary-color;
+        font-weight: 200;
+        font-size: v.$font-size-base;
+        width: 30px;
+        height: 30px;
+        border-radius: v.$border-radius-base;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    .line {
+      font-size: v.$font-size-base;
+      color: v.$secondary-color;
+      margin-top: -6px;
+    }
+
+    .status-dot {
+      display: inline-block;
+      margin-right: 6px;
+    }
+  }
+
+  .mat-mdc-header-cell {
+    border-bottom-style: none;
+  }
+
+  .mat-column-actions {
+    button {
+      border: 1px solid v.$primary-color;
+      background: none;
+      height: 22px;
+      width: 23px;
+      display: grid;
+      align-items: center;
+      justify-content: center;
+
+      .mat-icon {
+        font-size: v.$font-size-icon;
+        height: 11px;
+        color: v.$primary-color;
+      }
+    }
+  }
+
+  @media (max-width: 600px) {
+    .filters {
+      flex-wrap: wrap;
+      gap: 8px;
+
+      .pill {
+        padding: 6px 12px;
+        font-size: 9px;
+      }
+    }
+
+    .queue-table {
+      font-size: 13px;
+      min-width: unset;
+
+      thead,
+      tr.mat-header-row {
+        display: none;
+      }
+
+      tr.mat-row {
+        display: block;
+        margin-bottom: 16px;
+        padding: 12px;
+        border: 1px solid v.$tab-btn-bg-color;
+        border-radius: v.$border-radius-base;
+      }
+
+      td.mat-cell {
+        display: flex;
+        justify-content: space-between;
+        padding: 6px 0;
+        border-bottom: 1px solid v.$tab-btn-bg-color;
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        /* Add labels before cell content */
+        &:nth-child(1)::before {
+          content: "ORIGINATOR";
+          font-weight: 600;
+          color: v.$secondary-color;
+          flex-basis: 40%;
+          text-transform: uppercase;
+        }
+        &:nth-child(2)::before {
+          content: "CLIENT/LINE";
+          font-weight: 600;
+          color: v.$secondary-color;
+          flex-basis: 40%;
+          text-transform: uppercase;
+        }
+        &:nth-child(3)::before {
+          content: "TYPE";
+          font-weight: 600;
+          color: v.$secondary-color;
+          flex-basis: 40%;
+          text-transform: uppercase;
+        }
+        &:nth-child(4)::before {
+          content: "STATUS";
+          font-weight: 600;
+          color: v.$secondary-color;
+          flex-basis: 40%;
+          text-transform: uppercase;
+        }
+        &:nth-child(5)::before {
+          content: "CREATED";
+          font-weight: 600;
+          color: v.$secondary-color;
+          flex-basis: 40%;
+          text-transform: uppercase;
+        }
+        &:nth-child(6)::before {
+          content: "ACTIONS";
+          font-weight: 600;
+          color: v.$secondary-color;
+          flex-basis: 40%;
+          text-transform: uppercase;
+        }
+      }
+
+      .originator {
+        flex-direction: row;
+        gap: 12px;
+
+        .avatar {
+          width: 36px;
+          height: 36px;
+          font-size: 14px;
+        }
+      }
+
+      .line {
+        margin-top: 0;
+        font-size: 12px;
+      }
+
+      .status-dot {
+        margin-right: 4px;
+      }
+    }
+
+    .mat-column-actions button {
+      height: 28px;
+      width: 28px;
+
+      .mat-icon {
+        font-size: 18px;
+        height: 18px;
+      }
+    }
+  }
+
+  @media (min-width: 601px) and (max-width: 959px) {
+    .filters {
+      gap: 12px;
+
+      .pill {
+        padding: 6px 20px;
+        font-size: 10px;
+      }
+    }
+
+    .queue-table {
+      font-size: 13px;
+      min-width: 700px; /* force horizontal scroll if screen narrow */
+
+      tr {
+        height: 30px;
+      }
+
+      td {
+        padding: 8px 14px;
+        white-space: nowrap;
+      }
+
+      .originator {
+        gap: 10px;
+
+        .avatar {
+          width: 32px;
+          height: 32px;
+          font-size: 14px;
+        }
+      }
+
+      .line {
+        margin-top: -4px;
+        font-size: 13px;
+      }
+
+      .status-dot {
+        margin-right: 6px;
+      }
+    }
+
+    .mat-column-actions button {
+      height: 24px;
+      width: 24px;
+
+      .mat-icon {
+        font-size: 16px;
+        height: 16px;
+      }
+    }
+  }
+
+  @media (min-width: 960px) {
+    .queue-table {
+      min-width: unset;
+      font-size: 14px;
+      white-space: normal;
+    }
+  }
+}

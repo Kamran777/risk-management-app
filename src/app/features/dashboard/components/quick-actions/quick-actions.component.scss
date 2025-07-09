@@ -1,0 +1,35 @@
+@use "../../../../shared/styles/abstracts/variables" as v;
+@use "sass:color";
+
+.quick-actions-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  button {
+    background-color: v.$text-color-blue;
+    border: 1px solid v.$text-color-blue;
+    height: 36px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      background-color: color.adjust(v.$text-color-blue, $lightness: -10%);
+      border-color: color.adjust(v.$text-color-blue, $lightness: -10%);
+      outline: none;
+    }
+  }
+
+  @media (max-width: 600px) {
+    button {
+      font-size: 11px;
+    }
+  }
+
+  @media (min-width: 601px) and (max-width: 959px) {
+    button {
+      font-size: 14px;
+    }
+  }
+}

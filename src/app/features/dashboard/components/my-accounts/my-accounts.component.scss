@@ -1,0 +1,328 @@
+@use "../../../../shared/styles/abstracts/variables" as v;
+@use "../../../../shared/styles/abstracts/mixins" as m;
+
+.accounts-container {
+  padding: 24px;
+  background-color: v.$expanded-card-color; /* Dark background */
+  border-radius: v.$border-radius-base;
+
+  .accounts-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+
+    h3 {
+      margin: 0;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      margin-left: 2rem;
+
+      .search-wrapper {
+        background-color: #1a1d2b;
+        border-radius: v.$border-radius-base;
+        padding: 5px 16px;
+        width: 180px;
+        display: flex;
+        align-items: center;
+        margin-right: 16px;
+
+        .search-input {
+          background: transparent;
+          border: none;
+          outline: none;
+          width: 100%;
+          color: v.$primary-color;
+          font-size: 12px;
+
+          &::placeholder {
+            color: v.$primary-color;
+            opacity: 0.7;
+          }
+        }
+      }
+
+      .action-button {
+        margin-right: 10px;
+        font-size: 10px;
+        height: 26px;
+        color: v.$text-color-blue;
+        border: 1px solid v.$text-color-blue;
+        &:hover {
+          background-color: #333333;
+        }
+      }
+
+      .new-button {
+        background-color: v.$text-color-blue; /* Example blue color */
+        color: v.$primary-color;
+        font-size: 10px;
+        height: 26px;
+        .mat-icon {
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+
+  .accounts-table-container {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
+    margin-bottom: 12px;
+
+    /* For Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: v.$compact-card-color v.$expanded-card-color;
+
+    /* For WebKit browsers (Chrome, Safari) */
+    &::-webkit-scrollbar {
+      height: 8px; /* horizontal scrollbar height */
+    }
+    &::-webkit-scrollbar-track {
+      background: v.$tab-btn-bg-color;
+      border-radius: 4px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: v.$compact-card-color;
+      border-radius: 4px;
+      border: 2px solid v.$tab-btn-bg-color; /* padding around thumb */
+    }
+    &:hover::-webkit-scrollbar-thumb {
+      background-color: v.$expanded-card-color;
+    }
+
+    table {
+      background-color: v.$expanded-card-color;
+      .mat-mdc-header-cell {
+        border-bottom-style: none;
+      }
+
+      th {
+        padding: 0 20px;
+        background-color: v.$compact-card-color;
+        font-size: 9px;
+      }
+
+      td {
+        font-size: 10px;
+        color: v.$primary-color;
+        border-bottom-style: none;
+      }
+
+      tr {
+        color: v.$primary-color;
+        font-size: 11px;
+        height: 27px;
+      }
+
+      .account-name-type {
+        display: flex;
+        flex-direction: column;
+        line-height: 12px;
+        .account-name {
+          font-weight: 500;
+          white-space: nowrap;
+        }
+        .account-type {
+          font-size: 9px;
+          font-weight: v.$font-weight-base;
+          color: v.$secondary-color;
+        }
+      }
+
+      .loss-ratio {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 4px;
+        font-weight: bold;
+        border-radius: 1rem;
+        font-size: 9px;
+        width: 30px;
+        text-align: center;
+        padding: 0 7px;
+      }
+      .loss-ratio-high {
+        background-color: v.$danger-color; /* Red */
+        color: v.$primary-color;
+      }
+      .loss-ratio-medium {
+        background-color: v.$warning-color; /* Orange */
+        color: #333;
+      }
+      .loss-ratio-low {
+        background-color: v.$success-color; /* Green */
+        color: v.$primary-color;
+      }
+
+      .triage {
+        color: v.$text-color-blue;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 4px 8px;
+        border-radius: 4px;
+        border: 1px solid v.$text-color-blue;
+        font-weight: 500;
+        border-radius: 1rem;
+        font-size: 9px;
+        width: 30px;
+        text-align: center;
+        padding: 2px 8px;
+      }
+
+      .appetite {
+        background-color: #1e2b59;
+        display: inline-block;
+        padding: 0 17px;
+        border-radius: 16px; /* Pill shape */
+        font-size: 8px;
+        font-weight: 500;
+      }
+
+      .status-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: v.$border-radius-base;
+        display: inline-block;
+        margin-right: 6px;
+      }
+
+      .status {
+        white-space: nowrap;
+      }
+
+      .status-active {
+        background-color: v.$success-color; /* Darker blue */
+      }
+      .status-under-review {
+        background-color: v.$text-color-blue; /* Darker yellow */
+      }
+
+      .winnability-stars {
+        display: inline-flex;
+        align-items: center;
+        padding: 2px 7px;
+        border: 1px solid v.$text-color-blue;
+        border-radius: v.$border-radius-base;
+        font-size: 9px;
+        color: v.$text-color-blue;
+        font-weight: v.$font-weight-bold;
+
+        .mat-icon {
+          color: v.$text-color-blue;
+          font-size: 8px;
+          height: 7px;
+          width: 9px;
+        }
+        .winnability-text {
+          margin-left: 5px;
+          white-space: nowrap;
+        }
+      }
+
+      .actions {
+        mat-icon {
+          border: 1px solid;
+          border-radius: v.$border-radius-base;
+          rotate: 90deg;
+          font-size: 9px;
+          color: v.$primary-color;
+          @include m.flex-center(row, center, center);
+          width: 16px;
+          height: 16px;
+        }
+      }
+    }
+  }
+}
+
+.striped-row {
+  background-color: v.$compact-card-color;
+}
+
+@media (max-width: 1024px) {
+  .accounts-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: v.$gap-base;
+  }
+
+  .header-actions {
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-left: 0 !important;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .search-wrapper {
+    width: 100% !important;
+    margin-right: 0 !important;
+  }
+
+  .action-button,
+  .new-button {
+    flex: 1 1 auto;
+    min-width: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .accounts-container {
+    padding: 16px;
+  }
+
+  table {
+    font-size: 10px;
+  }
+
+  th,
+  td {
+    padding: 4px 8px !important;
+  }
+
+  .account-name-type .account-name {
+    font-size: 10px;
+  }
+
+  .account-name-type .account-type {
+    font-size: 8px;
+  }
+
+  .winnability-stars {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .accounts-header {
+    gap: v.$gap-base;
+  }
+  .header-actions {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .search-wrapper {
+    margin-bottom: 8px;
+  }
+
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .winnability-stars {
+    justify-content: center;
+  }
+
+  .winnability-text {
+    margin: 0;
+  }
+}

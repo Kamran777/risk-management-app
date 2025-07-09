@@ -1,0 +1,122 @@
+@use "../../../../../../shared/styles/abstracts/variables" as v;
+@use "../../../../../../shared/styles/abstracts/mixins" as m;
+
+.trend-section {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+
+  mat-card {
+    @include m.mat-card();
+  }
+
+  .title {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+
+    mat-icon {
+      border: 1px solid;
+      border-radius: v.$border-radius-base;
+      font-size: 14px;
+      align-content: center;
+      padding-left: 3px;
+      width: 17px;
+      height: 20px;
+    }
+  }
+
+  .win-box {
+    flex: 1;
+    padding: 15px;
+
+    .trend-item {
+      margin: 10px 0;
+
+      .label {
+        display: flex;
+        font-size: 14px;
+        gap: v.$gap-base;
+      }
+
+      .value {
+        font-size: 13px;
+        color: v.$secondary-color;
+      }
+    }
+  }
+
+  .increasing,
+  .decreasing {
+    .progress-bar {
+      height: 14px;
+      @include m.flex-center(row, left, center);
+      gap: v.$gap-base;
+      margin-top: -12px;
+      margin-bottom: 0;
+      margin-left: 45px;
+
+      @media (max-width: 768px) {
+        height: 9px;
+      }
+
+      .fill {
+        height: 100%;
+        border-radius: v.$border-radius-base;
+      }
+
+      &.green .fill {
+        background: linear-gradient(to right, #273843, #306e5a, #37a06e);
+      }
+
+      &.yellow .fill {
+        background: linear-gradient(to right, #454342, #ad9354, #e8c25e);
+      }
+    }
+  }
+}
+
+.order-number {
+  border: 1px solid;
+  border-radius: 2rem;
+  padding: 8px 14px;
+
+  &.order-number-increasing {
+    color: v.$success-color;
+  }
+
+  &.order-number-decreasing {
+    color: v.$warning-color;
+  }
+}
+
+@media (max-width: 768px) {
+  .trend-section {
+    flex-direction: column;
+    .win-box {
+      padding: 10px;
+
+      .trend-item {
+        .label {
+          font-size: 8px;
+        }
+
+        .value {
+          font-size: 9px;
+        }
+      }
+    }
+
+    .increasing,
+    .decreasing {
+      .progress-bar {
+        margin-left: 36px;
+      }
+    }
+  }
+
+  .order-number {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+}

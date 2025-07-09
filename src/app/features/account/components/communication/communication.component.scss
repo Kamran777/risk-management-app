@@ -1,0 +1,135 @@
+@use "../../../../shared/styles/abstracts/variables" as v;
+@use "../../../../shared/styles/abstracts/mixins" as m;
+
+$tablet: 960px;
+$mobile: 600px;
+
+.communication-container {
+  .communication-details {
+    background-color: v.$expanded-card-color;
+    padding: 1rem;
+    border-radius: v.$border-radius-base;
+
+    .toolbar {
+      display: flex;
+      gap: v.$gap-base;
+      margin-bottom: 20px;
+      align-items: center;
+
+      input.search {
+        padding: 0 12px;
+        border: 1px solid v.$secondary-color;
+        border-radius: v.$border-radius-base;
+        background: v.$compact-card-color;
+        color: v.$primary-color;
+        @include m.responsive-font-size(14px, 13px, 12px);
+      }
+
+      button.filter,
+      button.group {
+        background: v.$compact-card-color;
+        border: 1px solid v.$text-color-blue;
+        border-radius: 20px;
+        padding: 4px 24px;
+        color: v.$text-color-blue;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        @include m.responsive-font-size(11px, 10px, 9px);
+
+        &:hover {
+          background-color: v.$text-color-blue;
+          color: v.$primary-color;
+        }
+      }
+    }
+
+    .message-columns {
+      display: flex;
+      gap: 20px;
+      padding: 1rem;
+
+      .left-column,
+      .right-column {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+    }
+  }
+
+  @media (max-width: $tablet) {
+    .communication-details {
+      padding: 0.75rem;
+
+      .toolbar {
+        flex-wrap: wrap;
+        align-items: stretch;
+        gap: 10px;
+
+        button.filter,
+        button.group {
+          padding: 4px 16px;
+        }
+      }
+
+      .message-columns {
+        flex-direction: column;
+        padding: 0.5rem;
+      }
+    }
+  }
+
+  @media (max-width: $mobile) {
+    .communication-details {
+      padding: 0.5rem;
+
+      .toolbar {
+        flex-direction: column;
+        gap: 8px;
+
+        input.search {
+          padding: 5px 12px;
+        }
+      }
+
+      .message-columns {
+        flex-direction: column;
+        padding: 0;
+
+        .left-column,
+        .right-column {
+          .message-card {
+            padding: 12px;
+            gap: 6px;
+
+            .message-title {
+              @include m.responsive-font-size(14px, 13px, 12px);
+            }
+
+            .author {
+              @include m.responsive-font-size(11px, 11px, 10px);
+            }
+
+            .message-body {
+              @include m.responsive-font-size(12px, 11px, 10px);
+            }
+
+            .attachment-tag {
+              @include m.responsive-font-size(11px, 10px, 10px);
+
+              mat-icon {
+                @include m.responsive-font-size(11px, 10px, 10px);
+              }
+            }
+
+            .reply-button {
+              @include m.responsive-font-size(11px, 10px, 10px);
+              padding: 0.3rem 1.2rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}

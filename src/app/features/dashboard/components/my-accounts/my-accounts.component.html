@@ -1,0 +1,128 @@
+<div class="accounts-container">
+  <div class="accounts-header">
+    <h3>{{title}}</h3>
+    <div class="header-actions">
+      <div class="search-wrapper">
+        <input type="text" placeholder="Search" class="search-input" (keyup)="applyFilter($event)"
+          [(ngModel)]="searchText" />
+      </div>
+      <button mat-stroked-button class="action-button">Filter</button>
+      <button mat-stroked-button class="action-button">Sort</button>
+      <button mat-stroked-button class="action-button">Group</button>
+      <button mat-flat-button color="primary" class="new-button">
+        <mat-icon>add</mat-icon> New
+      </button>
+    </div>
+  </div>
+
+  <div class="mat-elevation-z2 accounts-table-container">
+    <table mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="accountNameType">
+        <th mat-header-cell *matHeaderCellDef>ACCOUNT NAME/TYPE</th>
+        <td mat-cell *matCellDef="let element">
+          <div class="account-name-type">
+            <span class="account-name">{{
+              element.accountNameType.split('\n')[0]
+              }}</span>
+            <span class="account-type">{{
+              element.accountNameType.split('\n')[1]
+              }}</span>
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="live">
+        <th mat-header-cell *matHeaderCellDef>LIVE</th>
+        <td mat-cell *matCellDef="let element">{{ element.live }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="broker">
+        <th mat-header-cell *matHeaderCellDef>BROKER</th>
+        <td mat-cell *matCellDef="let element">{{ element.broker }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="renewalDate">
+        <th mat-header-cell *matHeaderCellDef>RENEWAL DATE</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.renewalDate | date : 'MM/dd/yyyy' }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="premium">
+        <th mat-header-cell *matHeaderCellDef>PREMIUM</th>
+        <td mat-cell *matCellDef="let element" class="currency-cell">
+          {{ element.premium | currency : 'USD' : 'symbol' : '1.0-0' }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="ratedPremium">
+        <th mat-header-cell *matHeaderCellDef>RATED PREMIUM</th>
+        <td mat-cell *matCellDef="let element" class="currency-cell">
+          {{ element.ratedPremium | currency : 'USD' : 'symbol' : '1.0-0' }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="lossRatio">
+        <th mat-header-cell *matHeaderCellDef>LOSS RATIO</th>
+        <td mat-cell *matCellDef="let element">
+          <span class="loss-ratio" [ngClass]="getLossRatioClass(element.lossRatio)">
+            {{ element.lossRatio | percent }}
+          </span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="appetite">
+        <th mat-header-cell *matHeaderCellDef>APPETITE</th>
+        <td mat-cell *matCellDef="let element">
+          <span class="appetite" [ngClass]="getAppetiteClass(element.appetite)">
+            {{ element.appetite }}
+          </span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef>STATUS</th>
+        <td mat-cell *matCellDef="let element" class="status">
+          <span class="status-dot" [ngClass]="getStatusClass(element.status)"></span>
+          {{ element.status }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="triage">
+        <th mat-header-cell *matHeaderCellDef>TRIAGE</th>
+        <td mat-cell *matCellDef="let element">
+          <span class="triage">{{ element.triage }}</span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="winnability">
+        <th mat-header-cell *matHeaderCellDef>WINNABILITY</th>
+        <td mat-cell *matCellDef="let element">
+          <div class="winnability-stars">
+            <mat-icon *ngFor="
+                let star of [].constructor(getWinnabilityStars(element.winnability))
+              ">brightness_1</mat-icon>
+            <span class="winnability-text">{{ element.winnability }}</span>
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element" class="actions">
+          <button mat-icon-button [matMenuTriggerFor]="accountMenu">
+            <mat-icon>more_horiz</mat-icon>
+          </button>
+          <mat-menu #accountMenu="matMenu">
+            <button mat-menu-item>View Details</button>
+            <button mat-menu-item>Edit</button>
+            <button mat-menu-item>Delete</button>
+          </mat-menu>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; let odd = odd; columns: displayedColumns" [class.striped-row]="odd"></tr>
+    </table>
+  </div>
+</div>

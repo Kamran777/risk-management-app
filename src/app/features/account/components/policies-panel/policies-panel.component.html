@@ -1,0 +1,81 @@
+<div class="policies-container section-vertical-gap">
+  <h2>{{title}}</h2>
+
+  <div class="policies-table-container">
+    <div class="toolbar">
+      <input [(ngModel)]="searchTerm" placeholder="Search" class="search" />
+      <button class="filter">Filter</button>
+      <button class="group">Group</button>
+    </div>
+    <div class="table-scroll-container">
+      <table class="policies-table">
+        <thead>
+          <tr>
+            <th>LINE</th>
+            <th>EFF. DATE</th>
+            <th>EXP. DATE</th>
+            <th>STATUS</th>
+            <th>EXPIRING TECH</th>
+            <th>EXPIRING PREMIUM</th>
+            <th>RENEWAL TO TECH</th>
+            <th>RENEWAL TECH</th>
+            <th>RENEWAL PREMIUM</th>
+            <th>RATE CHANGE</th>
+            <th>LOSS RATIO</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let policy of filteredPolicies">
+            <td>
+              <div class="line">
+                <div class="policy-line-title">
+                  <mat-icon [ngClass]="policy.iconColor">{{ policy.icon }}</mat-icon>
+                  <div class="title">{{ policy.line }}</div>
+                </div>
+                <div class="subtitle">{{ policy.id }}</div>
+              </div>
+            </td>
+            <td>{{ policy.effectiveDate }}</td>
+            <td>{{ policy.expiryDate }}</td>
+            <td><span class="status-dot" [ngClass]="policy.statusColor"></span> {{ policy.status }}</td>
+            <td>{{ policy.expiringTech }}</td>
+            <td>{{ policy.expiringPremium }}</td>
+            <td>{{ policy.renewalToTech }}</td>
+            <td>{{ policy.renewalTech }}</td>
+            <td><strong>{{ policy.renewalPremium }}</strong></td>
+            <td [ngStyle]="{ color: policy.rateChangeColor }">{{ policy.rateChange }}</td>
+            <td>
+              <span class="loss-ratio"
+                [ngStyle]="{ backgroundColor: policy.lossRatioColor, color: policy.lossRatioColor === '#facc15' ? 'black' : 'white' }">{{
+                policy.lossRatio
+                }}</span>
+            </td>
+            <td class="actions">
+              <button mat-icon-button [matMenuTriggerFor]="workQueueMenu">
+                <mat-icon class="menu">more_vert</mat-icon>
+              </button>
+              <mat-menu #workQueueMenu="matMenu">
+                <button mat-menu-item>View Details</button>
+                <button mat-menu-item>Edit</button>
+                <button mat-menu-item>Delete</button>
+              </mat-menu>
+            </td>
+          </tr>
+          <tr class="summary">
+            <td colspan="4"><strong>TOTAL ({{ filteredPolicies.length }})</strong></td>
+            <td>{{ totalExpiringTech | currency:'USD':'symbol':'1.0-0' }}</td>
+            <td>{{ totalExpiringPremium | currency:'USD':'symbol':'1.0-0' }}</td>
+            <td>{{ totalRenewalToTech | currency:'USD':'symbol':'1.0-0' }}</td>
+            <td>{{ totalRenewalTech | currency:'USD':'symbol':'1.0-0' }}</td>
+            <td><strong>{{ totalRenewalPremium | currency:'USD':'symbol':'1.0-0' }}</strong></td>
+            <td>{{ averageRateChange | number:'1.1-2' }}%</td>
+            <td><span class="loss-ratio" style="background-color: #facc15">{{ averageLossRatio | number:'1.1-2'
+                }}%</span></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

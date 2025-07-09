@@ -1,0 +1,19 @@
+<div class="tab-bar-wrapper">
+  <div class="tab-bar" #tabBar (scroll)="updateScrollButtons()">
+    <ng-container *ngFor="let tab of tabs">
+      <button mat-button class="tab-button" [routerLink]="tab.route" routerLinkActive="active">
+        <mat-icon>{{ tab.icon }}</mat-icon>
+        {{ tab.label }}
+      </button>
+    </ng-container>
+  </div>
+
+  <div class="scroll-arrows">
+    <button *ngIf="showLeft" class="arrow-btn" (click)="scrollLeft()">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <button *ngIf="showRight" class="arrow-btn" (click)="scrollRight()">
+      <mat-icon>arrow_forward</mat-icon>
+    </button>
+  </div>
+</div>

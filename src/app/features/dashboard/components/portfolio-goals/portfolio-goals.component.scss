@@ -1,0 +1,182 @@
+@use "../../../../shared/styles/abstracts/variables" as v;
+
+.portfolio-goals-card {
+  .gauge-container {
+    position: relative;
+    margin-bottom: 2rem;
+
+    .title {
+      display: flex;
+      justify-content: space-between;
+      font-size: v.$font-size-base;
+      text-transform: uppercase;
+      color: v.$secondary-color;
+      margin-bottom: 10px;
+    }
+
+    .renewal-bar-icons {
+      margin-left: 40%;
+    }
+
+    .portfolio-bar-icons {
+      margin-right: 31%;
+    }
+
+    .portfolio-target-label {
+      margin-left: 27px;
+    }
+
+    .renewal-target-label {
+      margin-bottom: 3px;
+    }
+
+    .arrow {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 10px;
+
+      &.top {
+        top: -28px;
+
+        .blue {
+          font-size: 29px;
+          color: v.$text-color-blue;
+          position: relative;
+          margin-top: -11px;
+          margin-left: 19px;
+        }
+
+        .target-label {
+          color: v.$secondary-color;
+          font-size: 8px;
+          margin-top: -7px;
+        }
+      }
+
+      &.bottom {
+        top: 28px;
+
+        .green {
+          font-size: 20px;
+          color: v.$success-color;
+        }
+      }
+    }
+
+    .bar-zone {
+      display: flex;
+      height: 22px;
+      border-radius: v.$border-radius-base;
+      overflow: hidden;
+      position: relative;
+
+      .segment {
+        height: 100%;
+      }
+
+      .green {
+        background-color: v.$success-color;
+      }
+
+      .yellow {
+        background-color: v.$warning-color;
+      }
+
+      .red {
+        background-color: v.$danger-color;
+      }
+
+      .value {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        transform: translateX(-50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 7px;
+        font-weight: bold;
+        white-space: nowrap;
+      }
+
+      .value-1 {
+        left: 34.2%;
+      }
+
+      .value-2 {
+        left: 70%;
+      }
+    }
+
+    .status-text {
+      text-align: center;
+      font-size: 8px;
+      margin-top: -12px;
+
+      &.green {
+        color: v.$success-color;
+      }
+
+      &.yellow {
+        color: v.$warning-color;
+      }
+
+      &.red {
+        color: v.$danger-color;
+      }
+    }
+  }
+
+  .goal-line {
+    margin-bottom: 24px;
+
+    .goal-container {
+      display: flex;
+      gap: 10px;
+      .left-side {
+        flex: 2;
+      }
+
+      .right-side span {
+        font-size: 9px;
+        display: flex;
+        margin-top: 2px;
+      }
+    }
+
+    .goal-label {
+      font-size: 9px;
+      text-transform: uppercase;
+      color: v.$secondary-color;
+      margin-bottom: 4px;
+    }
+
+    .bar-wrapper {
+      background: v.$bar-fill;
+      border-radius: 6px;
+      height: 22px;
+      position: relative;
+      display: flex;
+
+      .bar-fill {
+        color: v.$primary-color;
+        padding-left: 6px;
+        font-size: 9px;
+        width: 67%;
+        display: flex;
+        align-items: center;
+        padding-right: 8px;
+        justify-content: end;
+      }
+    }
+
+    .goal-foot {
+      display: flex;
+      font-size: 8px;
+      color: v.$secondary-color;
+      justify-content: flex-end;
+      margin-right: 40px;
+    }
+  }
+}

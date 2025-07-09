@@ -1,0 +1,188 @@
+@use "../../../../shared/styles/abstracts/variables" as v;
+@use "../../../../shared/styles/abstracts/mixins" as m;
+
+.account-header {
+  display: block;
+
+  .breadcrumb {
+    color: v.$secondary-color;
+    @include m.font(12px, 100);
+
+    .highlight {
+      color: v.$text-color-blue;
+    }
+  }
+
+  .account-header-container {
+    @include m.flex-center(row, space-between, center);
+    flex-wrap: wrap;
+    margin-top: 1rem;
+
+    @include m.gap-size(32px, 24px, 20px);
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .account-info {
+      display: flex;
+      gap: 15px;
+
+      @media (max-width: 768px) {
+        flex-direction: row;
+        align-items: flex-start;
+      }
+
+      @media (max-width: 480px) {
+        @include m.flex-center(column, center, center);
+        text-align: center;
+      }
+
+      .logo {
+        width: 88px;
+        height: 88px;
+        border-radius: 50%;
+
+        @media (max-width: 480px) {
+          width: 64px;
+          height: 64px;
+        }
+      }
+
+      .left-details {
+        @include m.flex-center(column, baseline, left);
+
+        .company-name {
+          margin: 0;
+          color: v.$primary-color;
+          padding-bottom: 7px;
+          @include m.font(1.4rem, 100);
+
+          @media (max-width: 480px) {
+            font-size: 1.2rem;
+          }
+        }
+
+        .company-details {
+          @include m.flex-center(row, baseline, left);
+
+          @media (max-width: 768px) {
+            @include m.flex-center(column, baseline, left);
+            gap: 10px;
+          }
+
+          .address {
+            font-size: 12px;
+            color: v.$primary-color;
+            line-height: 1.3;
+          }
+
+          .meta {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 16px;
+            padding-left: 1rem;
+
+            @media (max-width: 768px) {
+              padding-left: 0;
+            }
+
+            .meta-section {
+              display: flex;
+              gap: 7px;
+            }
+
+            .meta-line {
+              width: 1px;
+              height: 27px;
+              background: v.$line-color;
+
+              @media (max-width: 480px) {
+                display: none;
+              }
+            }
+
+            .meta-item {
+              .label {
+                color: v.$secondary-color;
+                text-transform: uppercase;
+                @include m.font(11px, 500);
+              }
+
+              .value {
+                @include m.font(11px, 300);
+                color: v.$primary-color;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .alert-card {
+      background-color: v.$compact-card-color;
+      border: 1px solid v.$warning-color;
+      border-radius: 1.3rem;
+      padding: 20px 24px;
+
+      @media (min-width: 768px) {
+        width: 100%;
+        max-width: 550px;
+      }
+
+      @media (max-width: 480px) {
+        padding: 16px;
+      }
+
+      .header {
+        @include m.flex-center(row, left, center);
+        margin-bottom: 16px;
+        color: v.$warning-color;
+
+        .icon {
+          margin-right: 4px;
+          font-size: 20px;
+          @include m.flex-center(row, left, center);
+        }
+
+        .title {
+          @include m.font(18px, 300);
+
+          @media (max-width: 480px) {
+            font-size: 16px;
+          }
+        }
+      }
+
+      .alert-items {
+        @include m.flex-center(row, left, baseline);
+        @include m.gap-size(16px, 12px, 10px);
+
+        @media (max-width: 768px) {
+          flex-direction: column;
+        }
+      }
+
+      .alert-item {
+        .alert-title {
+          color: v.$primary-color;
+          @include m.font(13px, 100);
+        }
+
+        .alert-sub {
+          @include m.font(11px, 100);
+          font-size: 11px;
+          color: v.$secondary-color;
+        }
+
+        .alert-link {
+          @include m.font(12px, 100);
+          color: v.$text-color-blue;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
