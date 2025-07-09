@@ -29,6 +29,22 @@ This project was generated using [Angular CLI](https://github.com/angular/angula
 - Show total value during search in a Policy table
 - etc.
 
+## Steps to clone the project
+
+- Open CMD (Command Prompt)
+- Redirect to desktop:
+```bash
+cd desktop
+```
+- Clone the project
+```bash
+git clone https://github.com/Kamran777/risk-management-app.git
+```
+Then redirect to the app
+```bash
+cd risk-management-app
+```
+
 ## Before starting the local development server, run:
 
 ```bash
