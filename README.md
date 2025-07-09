@@ -29,12 +29,24 @@ This project was generated using [Angular CLI](https://github.com/angular/angula
 - Show total value during search in a Policy table
 - etc.
 
+## Before starting the local development server, run:
+
+```bash
+npm install
+```
+
 ## Development server
 
 To start a local development server, run:
 
 ```bash
 ng serve
+```
+
+OR
+
+```bash
+ng serve -o
 ```
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
